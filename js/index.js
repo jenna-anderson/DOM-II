@@ -39,15 +39,27 @@ function shrinkImage(event){
 }
 
 // button events
+const destination = document.querySelectorAll('div.destination');
+
+Array.from(destination).forEach(elem => {
+    elem.addEventListener('click', textColor2);
+})
 
 const buttons = document.querySelectorAll('.btn');
 
 Array.from(buttons).forEach(button => {
-    button.addEventListener('mouseover', textColor);
+    button.addEventListener('click', textColor);
+   
 })
 
 function textColor(event){
     event.target.style.color = 'pink';
+    event.stopPropagation();
+}
+
+function textColor2(event){
+    event.target.style.color = 'blue';
+   
 }
 
 // secret key event
@@ -120,3 +132,4 @@ function changeHeadingColor(){
 }
 
 window.addEventListener('resize', changeHeadingColor);
+
