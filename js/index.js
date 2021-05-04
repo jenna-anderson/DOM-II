@@ -61,8 +61,6 @@ function secretMessage(event) {
 }
 
 
-// const topImage = document.querySelector('.intro img');
-
 // highlight event listener
 
 const text = document.querySelectorAll('p');
@@ -75,3 +73,50 @@ Array.from(text).forEach(p => {
 function highlight(event){
     event.target.style.backgroundColor = 'yellow';
 };
+
+
+// dark mode and light mode
+
+document.addEventListener('keyup', darkMode);
+
+function darkMode(event){
+    if (event.key === "d"){
+        event.target.style.backgroundColor = 'black';
+        event.target.style.color = 'white';
+    }
+}
+
+document.addEventListener('keyup', lightMode);
+
+function lightMode(event){
+    if (event.key === "l"){
+        event.target.style.backgroundColor = 'white';
+        event.target.style.color = 'black';
+    }
+}
+
+
+// zoom in on bottom image
+
+const topImage = document.querySelector('.content-destination img');
+
+let scale = 1;
+
+function zoom(event){
+    scale += event.deltaY * -0.01;
+
+    scale = Math.min(Math.max(.5, scale), 4);
+
+    topImage.style.transform = `scale(${scale})`;
+}
+
+topImage.addEventListener('wheel', zoom);
+
+// change heading colors when resize window
+const pageTitle = document.querySelector('h1');
+
+function changeHeadingColor(){
+    pageTitle.style.color = "#17A2B8";
+}
+
+window.addEventListener('resize', changeHeadingColor);
