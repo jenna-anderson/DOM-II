@@ -7,6 +7,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 Array.from(navLinks).forEach(link => {
     link.addEventListener('mouseover', enlargeText);
     link.addEventListener('mouseout', shrinkText);
+    link.addEventListener('click', preventRefresh);
 })
 
 function enlargeText(event){
@@ -15,6 +16,10 @@ function enlargeText(event){
 
 function shrinkText(event){
     event.target.style.fontSize = '1.6rem';
+}
+
+function preventRefresh(event){
+    event.preventDefault();
 }
 
 // middle content image events
@@ -38,9 +43,20 @@ function shrinkImage(event){
 const buttons = document.querySelectorAll('.btn');
 
 Array.from(buttons).forEach(button => {
-    button.addEventListener('click', popUp);
+    button.addEventListener('focus', glow);
 })
 
-function popUp(){
-    alert('Sign up here!');
+function glow(event){
+    event.target.style.background = 'pink';
 }
+
+// secret key event
+
+document.addEventListener('keydown', secretMessage);
+
+function secretMessage(event) {
+    if(event.key === "$"){
+        alert("You've won an all-inclusive trip to the Maldives!");
+    }
+}
+
