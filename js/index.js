@@ -27,7 +27,7 @@ const midImages = document.querySelectorAll('.img-content');
 
 Array.from(midImages).forEach(image => {
     image.addEventListener('dblclick', enlargeImage);
-    image.addEventListener('click', shrinkImage);
+    image.addEventListener('pointerout', shrinkImage);
 })
 
 function enlargeImage(event){
@@ -43,11 +43,11 @@ function shrinkImage(event){
 const buttons = document.querySelectorAll('.btn');
 
 Array.from(buttons).forEach(button => {
-    button.addEventListener('focus', glow);
+    button.addEventListener('mouseover', textColor);
 })
 
-function glow(event){
-    event.target.style.background = 'pink';
+function textColor(event){
+    event.target.style.color = 'pink';
 }
 
 // secret key event
@@ -60,3 +60,18 @@ function secretMessage(event) {
     }
 }
 
+
+// const topImage = document.querySelector('.intro img');
+
+// highlight event listener
+
+const text = document.querySelectorAll('p');
+
+
+Array.from(text).forEach(p => {
+    p.addEventListener('copy', highlight);
+});
+
+function highlight(event){
+    event.target.style.backgroundColor = 'yellow';
+};
